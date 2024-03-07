@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bank
   attr_accessor :player_balance, :dealer_balance, :pot
 
@@ -14,7 +16,16 @@ class Bank
   end
 
   def payout_winner(winner)
-    # Выплата победителю
+    case winner
+    when :player
+      @player_balance += @pot
+    when :dealer
+      @dealer_balance += @pot
+    when :tie
+      @player_balance += @pot / 2
+      @dealer_balance += @pot / 2
+    end
+    @pot = 0
   end
 
   def reset

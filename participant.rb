@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Participant
   attr_accessor :hand, :name
 
@@ -18,7 +20,7 @@ class Participant
         aces += 1
         total += 11
       else
-        total += card.value
+        total += card.face_value
       end
     end
 
@@ -34,6 +36,6 @@ class Participant
   end
 
   def show_hand
-    hand.map(&:to_s).join(", ")
+    hand.map(&:to_s).join(', ')
   end
 end
